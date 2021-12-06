@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-config
+  namespace: default
+data:
+  mongodbUrl: mongodb+srv://test:passwd@cluster0.4qbnb.mongodb.net/caterer
+  cacherServer:<Server,port details>
+  messageBrokerServer:<Details for topic>
+  
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: demo
+	name: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+      - image: <Image of docker repository>
+        name: demo
+		valueFrom:
+            configMapKeyRef:
+              name: demo-config
