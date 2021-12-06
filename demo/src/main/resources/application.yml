@@ -1,0 +1,27 @@
+# Setting the servelet context path
+server:
+  servlet:
+    context-path: "/caterer"
+
+# Enabled the logging level to trace
+logging:
+  level:
+    '[org.springframework.web]': "DEBUG" 
+    '[org.springframework.boot.autoconfigure.mongo.embedded]': "DEBUG"
+    '[org.mongodb]': "DEBUG"
+    
+# Mongo DB connection parameters
+spring:
+  data:
+    mongodb:
+      uri: 
+ 
+ # Added to resolve Swagger error in latest spring version     
+  mvc:
+    pathmatch:
+      matching-strategy: "ant-path-matcher"
+ 
+
+      
+
+ 
